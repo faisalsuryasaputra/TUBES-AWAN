@@ -1,0 +1,44 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Conference Room A",
+      "capacity": 12,
+      "status": "available"
+    },
+    {
+      "id": 2,
+      "name": "Meeting Room B",
+      "capacity": 6,
+      "status": "available"
+    },
+    {
+      "id": 3,
+      "name": "Executive Suite",
+      "capacity": 20,
+      "status": "available"
+    },
+    {
+      "id": 4,
+      "name": "Huddle Room 1",
+      "capacity": 4,
+      "status": "available"
+    },
+    {
+      "id": 5,
+      "name": "Training Room",
+      "capacity": 30,
+      "status": "available"
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1779024608310,
+      "roomId": 1,
+      "roomName": "Conference Room A",
+      "date": "2026-05-17",
+      "startTime": "12:30",
+      "endTime": "13:30"
+    }
+  ]
+}
