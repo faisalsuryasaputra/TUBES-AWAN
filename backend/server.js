@@ -50,6 +50,29 @@ app.post('/api/reservations', (req, res) => {
   res.status(201).json({ message: "Berhasil", data: newReservation });
 });
 
+// API: Update reservasi
+app.put('/api/reservations/:id', (req, res) => {
+  const data = readData();
+  const index = data.reservations.findIndex(r => r.id === parseInt(req.params.id));
+  
+  if (index === -1) return res.status(404).json({ message: "Reservasi tidak ditemukan" });
+
+  const room = data.rooms.find(r => r.id === parseInt(req.body.roomId));
+  if (!room) return res.status(404).json({ message: "Ruangan tidak ditemukan" });
+
+  data.reservations[index] = {
+    ...data.reservations[index],
+    roomId: room.id,
+    roomName: room.name,
+    date: req.body.date,
+    startTime: req.body.startTime,
+    endTime: req.body.endTime
+  };
+
+  writeData(data);
+  res.json({ message: "Berhasil diupdate", data: data.reservations[index] });
+});
+
 // API: Hapus reservasi
 app.delete('/api/reservations/:id', (req, res) => {
   const data = readData();

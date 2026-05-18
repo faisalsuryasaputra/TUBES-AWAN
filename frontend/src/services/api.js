@@ -25,3 +25,12 @@ export const deleteReservation = async (id) => {
   });
   return response.json();
 };
+
+export const updateReservation = async (id, reservationData) => {
+  const response = await fetch(`${API_URL}/reservations/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(reservationData),
+  });
+  return response.json();
+};
