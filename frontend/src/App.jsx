@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { getRooms, getReservations, createReservation, deleteReservation, updateReservation } from './services/api';
 
 function App() {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([
+    { id: 1, name: 'Conference Room A', capacity: 12 },
+    { id: 2, name: 'Meeting Room B', capacity: 6 },
+    { id: 3, name: 'Executive Suite', capacity: 20 },
+    { id: 4, name: 'Huddle Room 1', capacity: 4 },
+    { id: 5, name: 'Training Room', capacity: 30 }
+  ]);
   const [reservations, setReservations] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState('');
   const [date, setDate] = useState('');
@@ -17,11 +23,17 @@ function App() {
   const fetchData = async () => {
     try {
       const roomsData = await getRooms();
+      if (roomsData && roomsData.length > 0) {
+        setRooms(roomsData);
+      }
+    } catch (error) {
+      console.error("Gagal mengambil data ruangan:", error);
+    }
+    try {
       const reservationsData = await getReservations();
-      setRooms(roomsData || []);
       setReservations(reservationsData || []);
     } catch (error) {
-      console.error("Gagal mengambil data:", error);
+      console.error("Gagal mengambil data reservasi:", error);
     }
   };
 
@@ -154,38 +166,6 @@ function App() {
           </div>
         </div>
 
-        {/* Section Anggota Kelompok */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200 mt-8">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 text-center">Anggota Kelompok</h2>
-          <div className="overflow-x-auto max-w-4xl mx-auto">
-            <table className="w-full border-collapse border border-slate-300 text-center">
-              <thead>
-                <tr className="bg-slate-200">
-                  <th className="border border-slate-300 p-2 text-slate-800 font-bold w-1/2">Nama</th>
-                  <th className="border border-slate-300 p-2 text-slate-800 font-bold w-1/2">NIM</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="border border-slate-300 p-2 font-medium text-slate-700">Faisal Surya Saputra</td>
-                  <td className="border border-slate-300 p-2 font-bold text-slate-800">103012330152</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-300 p-2 font-medium text-slate-700">Hanif Haidar Fathin Mumtaz</td>
-                  <td className="border border-slate-300 p-2 font-bold text-slate-800">103012300072</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-300 p-2 font-medium text-slate-700">Yudis Akbar</td>
-                  <td className="border border-slate-300 p-2 font-bold text-slate-800">103012300358</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-300 p-2 font-medium text-slate-700">Riyan Permana Purba</td>
-                  <td className="border border-slate-300 p-2 font-bold text-slate-800">103012330471</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </div>
   );

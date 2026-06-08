@@ -39,6 +39,14 @@
       "date": "2026-05-17",
       "startTime": "12:30",
       "endTime": "13:30"
+    },
+    {
+      "id": 1780899964875,
+      "roomId": 2,
+      "roomName": "Meeting Room B",
+      "date": "2026-06-08",
+      "startTime": "12:47",
+      "endTime": "16:01"
     }
   ]
 }
