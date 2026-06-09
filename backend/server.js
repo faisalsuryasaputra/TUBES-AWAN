@@ -4,10 +4,12 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 const DATA_FILE = path.join(__dirname, 'data', 'database.json');
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*', // Set CORS_ORIGIN di .env untuk production
+}));
 app.use(express.json());
 
 const crypto = require('crypto');

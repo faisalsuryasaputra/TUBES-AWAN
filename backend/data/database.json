@@ -71,6 +71,12 @@
       "name": "Faisal Surya",
       "email": "faisal@example.com",
       "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f"
+    },
+    {
+      "id": 1781000248281,
+      "name": "abdul",
+      "email": "abdul@gmail.com",
+      "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
     }
   ]
 }

@@ -2,3 +2,7 @@
 .DS_Store
 dist
 .env
+
+# Jangan commit data user ke GitHub
+backend/data/database.json
+data/database.json
